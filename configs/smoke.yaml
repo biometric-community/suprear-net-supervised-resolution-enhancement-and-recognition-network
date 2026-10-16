@@ -1,0 +1,35 @@
+device: cuda
+data:
+  celeba_root: ../../datasets/celeba/extracted/celeba
+  max_images: 3000
+model:
+  image_size: 112
+  lr_scale: 4
+  emb_dim: 128
+train:
+  protocol: smoke
+  seed: 42
+  batch_size: 16
+  batch_size_hql: 16
+  num_workers: 2
+  epochs_c_pretrain: 1
+  epochs_gan: 1
+  epochs_hql: 1
+  hql_steps_per_epoch: 40
+  lr_g: 0.001
+
+  lr_d: 0.001
+  lr_c: 0.01
+  lr_hql: 0.0001
+  lambda_adv: 1.0
+  lambda_cls: 1.0
+  lambda_l1: 10.0
+  alpha1: 0.5
+  alpha2: 0.5
+eval:
+  max_ids: 50
+  probes_per_id: 2
+paths:
+  checkpoint_dir: outputs/checkpoints/smoke
+  log_dir: outputs/logs/smoke
+  figure_dir: outputs/figures/smoke
